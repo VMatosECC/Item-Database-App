@@ -11,12 +11,12 @@ class Item
 {
 private:
     //Data members
-    string  id;       // unique identifier (letter + 4 digits)
-    string  name;     // name of the item
-    double  price;    // price in USA dollars  
-    string* supplier; // pointer to a string object.
+    string  id;             // unique identifier (letter + 4 digits)
+    string  name;           // name of the item
+    double  price;          // price in USA dollars  
+    string* supplier;       // pointer to a string object.
 
-    static int count; //tally the number of Items created.
+    static int count;       //tally the number of Items created so far.
 
     //Utility functions
     string titleCase(string str) {
@@ -65,13 +65,8 @@ public:
     }
 
     void setSupplier(string supplier) {
-        //GOOD PRACTICE (copy-constructor)
-        // create a new string object and assign it to the supplier pointer.
-        // this->supplier = new string(titleCase(supplier));
-        
-        //BAD PRACTICE
-        // assign the address of a local variable to the supplier pointer.
-        // this->supplier = &supplier;
+        //RED FLAG: This is a shallow copy (it should be avoided).
+        //You may want to change it to a deep copy!!!
         *(this->supplier) = titleCase(supplier);
 
     }
@@ -126,14 +121,14 @@ public:
     //    count++;
     //}
 
-    //// Copy-Constructors Version 2 (assumes operator= already declared) =============
+    //// Copy-Constructors Version 2 (assumes operator= already overloaded) =============
     //// BEST PRACTICE
     //Item(const Item& sourceItem) {
     //    *this = sourceItem;
     //    count++;
     //}
 
-    //User-Defined Functions
+    //User-Defined Functions ----------------------------------------------
     string toString() {
         stringstream sout;
         sout << fixed << setprecision(2);
@@ -156,6 +151,9 @@ public:
         sout << item.toString();
         return sout;
     }
+
 };
-//Initialize the static data member.
+//Initialize the static data member ------------------------------------
 int Item::count = 0;
+
+//End of the class definition ------------------------------------------
