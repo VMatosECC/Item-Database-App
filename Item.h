@@ -48,10 +48,31 @@ private:
         return result;
     }
 
+    //Validate ID (first character must be a letter, followed by 4 digits)
+    bool isValidId(string id) {
+        if (id.length() != 5) {
+            return false;
+        }
+        if (!isalpha(id[0])) {
+            return false;
+        }
+        for (int i = 1; i < 5; i++) {
+            if (!isdigit(id[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+        
 public:
     //Mutators
     void setId(string id) {
         //TODO: Add validation. First character must be a letter, followed by 4 digits.
+        //TODO: If ID is X1000 (none provided), add (static) counter value to last digits,
+        //      e.g. X1001 for first item, X1002 for second, etc.
+        if (!isValidId(id)) {
+            throw invalid_argument("Invalid ID: " + id);    //much better option!
+        }
         this->id = id;
     }
 
@@ -92,7 +113,7 @@ public:
 
    
     //Constructors
-    Item(string id = "NA", string name = "NA", double price = 0, string supplier = "NA") {
+    Item(string id = "X1000", string name = "NA", double price = 0, string supplier = "NA") {
         setId(id);
         setName(name);
         setPrice(price);
