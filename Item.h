@@ -20,24 +20,30 @@ private:
 
     //Utility functions
     string titleCase(string str) {
-        //Converts the first character of each word to uppercase and the rest to lowercase.
+        //Convert the first character of each word to uppercase and the rest to lowercase.
+        // Skip over multiple spaces. Example: "the   quick BROWN fox" -> "The Quick Brown Fox"
         char previous = ' ';
+        char curr = ' ';
         string result = "";
 
         for (int i = 0; i < str.length(); i++) {
-            char curr = str[i];     //current character
+            curr = str[i];                  //current character
 
             if (curr == ' ' && previous == ' ') {
-                continue;           //Skip over multiple spaces.
+                continue;                   //Skip over multiple spaces.
             }
 
-            if (previous == ' ') {
+            if (previous == ' ') {          //begining of a word
                 result += toupper(curr);
             }
             else {
                 result += tolower(curr);
             }
             previous = curr;
+        }
+        //Remove trailing whitespace
+        if(curr == ' '){
+            result.pop_back();
         }
         return result;
     }
