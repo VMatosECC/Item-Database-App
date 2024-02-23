@@ -25,20 +25,25 @@ int main()
     cout << "\nCount of Items: " << Item::getCount() << endl;
     cout << "Count of Items: " << i2.getCount() << endl;
 
-      
-     Item i3 = i2;  // TRY-1. Before adding a copy constructor 
-                    // shallow copy of i2 to i3. The clone and the source 
-                    // point to the same memory location (BAD!)
-                    // --------------------------------------------------
-                    
-    // Item i3(i2);   //TRY-2. After adding a copy constructor
-                    // deep copy of i2 to i3. The clone and the source 
-                    // point to different memory locations (GOOD!)
-                    // --------------------------------------------------
 
-    //Item i3;          //TRY-3A. New copy constructor must be modified
-    //i3 = i2;          //TRY-3B  to handle the deep copy of i2 to i3
-                        //--------------------------------------------------
+    // TRY-1. Before adding a copy constructor 
+    // shallow copy of i2 to i3. The clone and the source 
+    // point to the same memory location (BAD!)
+    // --------------------------------------------------
+    Item i3 = i2;  
+                    
+    //TRY-2. After adding a copy constructor
+    // deep copy of i2 to i3. The clone and the source 
+    // point to different memory locations (GOOD!)
+    // --------------------------------------------------
+    // Item i3(i2);   
+
+    //TRY-3A. The above copy-constructor must be modified
+    //TRY-3B  to handle the deep copy of i2 to i3
+    // //--------------------------------------------------
+    //Item i3;          //TRY-3A. 
+    //i3 = i2;          //TRY-3B  
+                        
 
 
     //Common code for testing the three scenarios set for the copy constructor 
