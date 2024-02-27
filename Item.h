@@ -127,7 +127,9 @@ public:
     ~Item() {
         // Make sure copy-constructor was implemented well!
         // delete this->supplier;    //avoid memory leaks
-        cout << "+++ Item " << this->getId() << " destroyed." << endl;
+        //----------------------------------------------
+
+        //cout << "+++ Item " << this->getId() << " destroyed." << endl;
         count--;
     }
 
@@ -150,7 +152,8 @@ public:
     //}
 
     //User-Defined Functions ----------------------------------------------
-    string toString() {
+    // By adding virtual modifier the class becomes polymorphic
+    virtual string toString() {
         stringstream sout;
         sout << fixed << setprecision(2);
         sout << this << " Item [ID: " << getId() << ", Name: " << getName()
@@ -174,6 +177,7 @@ public:
     }
 
 };
+
 //Initialize the static data member ------------------------------------
 int Item::count = 0;
 
