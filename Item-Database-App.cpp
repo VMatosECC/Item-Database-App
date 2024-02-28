@@ -37,16 +37,28 @@ void experiment02() {
     //CAUTION. The following code will work only if Item is declared polymorphic!
     //         It is polymorphic if it has at least one virtual function.
     //         The toString function should be made virtual in the Item class.
-    //         You MUST use references Item*  
+    // 
+    //         You MUST use vector<Item*> otherwise object SLICING occurs 
+    //         and Books and Toys loose their additional data and are reduced 
+    //         only to an Item.
     //--------------------------------------------------------------------------------
-    cout << "\nTesting the DATABASE vector<Items>" << endl;
-    vector<Item*> db {&b1, &b2, &t1, &t2};
-    for (Item* i : db) {
+    cout << "\nTesting the DATABASE vector<Items*> db1" << endl;
+    vector<Item*> db1 {&b1, &b2, &t1, &t2};
+    for (Item* i : db1) {
         cout << i->toString() << endl;
     }
 
+    //Will not work - object slicing occurs!
+    cout << "\nTesting the DATABASE vector<Items> db2" << endl;
+    vector<Item> db2{ b1, b2, t1, t2 };
+    for (Item i : db2) {
+        cout << i.toString() << endl;
+    }
 
 }
+
+
+
 //----------------------------------------------------------------------------------------
 void experiment01() {
     //Testing the Item class. Zero-arguments constructor
