@@ -176,6 +176,12 @@ public:
         return sout;
     }
 
+    friend void showItem(Item& i);
+
+    friend void showItem(Item& i) {
+        cout << " Friend ==> " << i.getId() << ", " << i.getName() << endl;
+    }
+
 };
 
 //Initialize the static data member ------------------------------------

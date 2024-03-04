@@ -10,6 +10,7 @@ void experiment01();
 void experiment02();
 
 
+
 int main()
 {
    //experiment01();
@@ -55,6 +56,9 @@ void experiment02() {
         cout << i.toString() << endl;
     }
 
+    //Testing Friend function showItem. Observe that no qualification is used.
+    //Instead of b1.showItem(), the call is showItem(b1) where b1 is a parameter
+    showItem(b1);
 }
 
 
