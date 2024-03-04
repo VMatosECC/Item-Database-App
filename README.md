@@ -7,7 +7,9 @@ Versions of the operator= and operator<< are provided.
 Possible Subclasses Derived from Item (ID, name, price).
  
 **ElectronicItem**: Inherits from Item class, with additional attributes such as brand, power_consumption, warranty_period, etc.
+
 **ClothingItem**: Inherits from Item, with additional attributes such as size, color, material, style, etc.
+
 **FoodItem**: Inherits from Item, with additional attributes such as expiration_date, calories, nutritional_information, etc.
 **BookItem**: Inherits from Item, with additional attributes such as author, genre, publication_date, etc.
 **FurnitureItem**: Inherits from Item, with additional attributes such as material, dimensions, weight_capacity, etc.
